@@ -3,10 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Programming/PERSONAL%20CODES/JAVA/Flappy/src/Main.java</file>
-            <file>file:/C:/Programming/PERSONAL%20CODES/JAVA/Flappy/src/Model.java</file>
-            <file>file:/C:/Programming/PERSONAL%20CODES/JAVA/Flappy/src/Controller.java</file>
-            <file>file:/C:/Programming/PERSONAL%20CODES/JAVA/Flappy/src/View.java</file>
+            <file>file:/C:/Programming/PERSONAL%20CODES/JAVA/flappy-bird-javaswing/src/View.java</file>
+            <file>file:/C:/Programming/PERSONAL%20CODES/JAVA/flappy-bird-javaswing/src/ViewPanel.java</file>
+            <file>file:/C:/Programming/PERSONAL%20CODES/JAVA/flappy-bird-javaswing/src/Model/Model.java</file>
+            <file>file:/C:/Programming/PERSONAL%20CODES/JAVA/flappy-bird-javaswing/src/Controller.java</file>
+            <file>file:/C:/Programming/PERSONAL%20CODES/JAVA/flappy-bird-javaswing/src/Model/Sky.java</file>
+            <file>file:/C:/Programming/PERSONAL%20CODES/JAVA/flappy-bird-javaswing/src/Model/Bird.java</file>
+            <file>file:/C:/Programming/PERSONAL%20CODES/JAVA/flappy-bird-javaswing/src/Model/Pipe.java</file>
         </group>
     </open-files>
 </project-private>

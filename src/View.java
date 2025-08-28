@@ -10,7 +10,7 @@ public class View extends JFrame {
         panel = vp;
        
         setTitle("Flappy!");
-        setSize(800,900);
+        setSize(800,800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         add(panel);
 

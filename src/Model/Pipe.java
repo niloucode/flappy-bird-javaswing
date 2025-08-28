@@ -1,6 +1,6 @@
 package Model;
 
-import java.math.*;
+import java.lang.Math;
 
 public class Pipe {
     // gap - 194 / 2 = 97
@@ -8,9 +8,10 @@ public class Pipe {
     // boundy - 560
     
     // some function: update, getters/setters
+    private int velx=2;
+    
     private int x;
     private int y;
-    private int velx=5;
     private int boundx=120;
     private int boundy=560;
     private int gap = 194;
@@ -24,9 +25,9 @@ public class Pipe {
     public void generateY()
     {
         y = (int)Math.floor(Math.random()*340)+250;
-// BEST AVG        y = 420;
-// HIGHEST        y = 250;
-// LOWEST         y = 590;
+        // BEST AVG        y = 420;
+        // HIGHEST        y = 250;
+        // LOWEST         y = 590;
     }
     
     public void update()
