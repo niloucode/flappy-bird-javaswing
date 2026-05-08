@@ -2,21 +2,21 @@ package Model;
 
 public class Sky {
     private int x;
-    private int velx;
-    private int boundx;
+    private int velX;
+    private int boundX;
     
     public Sky()
     {
         x = 0;
-        velx = 20;
-        boundx = 3072;
+        velX = 20;
+        boundX = 3072;
     }
     
     public void update()
     {
-        x -= velx;
+        x -= velX;
         
-        if (x < -boundx)
+        if (x < -boundX)
         {
             x = 800;
         }

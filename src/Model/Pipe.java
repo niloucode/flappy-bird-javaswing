@@ -3,18 +3,13 @@ package Model;
 import java.lang.Math;
 
 public class Pipe {
-    // gap - 194 / 2 = 97
-    // boundx - 120
-    // boundy - 560
-    
-    // some function: update, getters/setters
-    private int velx=2;
+    private final int sizeX=120;
+    private final int sizeY=560;
+    private final int gap = 194;
+    private final int velX=2;
     
     private int x;
     private int y;
-    private int boundx=120;
-    private int boundy=560;
-    private int gap = 194;
     
     public Pipe(int x)
     {
@@ -25,16 +20,13 @@ public class Pipe {
     public void generateY()
     {
         y = (int)Math.floor(Math.random()*340)+250;
-        // BEST AVG        y = 420;
-        // HIGHEST        y = 250;
-        // LOWEST         y = 590;
     }
     
     public void update()
     {
-        x -= velx;
+        x -= velX;
         
-        if (x < -boundx)
+        if (x < -sizeX)
         {
             x = 800;
             generateY();
@@ -43,28 +35,22 @@ public class Pipe {
     
     public int getUpperY()
     {
-        return y-(gap/2+boundy);
+        return y-(gap/2)-sizeY;
     }
-    
     public int getLowerY()
     {
         return y+(gap/2);
     }
     
-    public int getBoundX()
+    public int getSizeX()
     {
-        return boundx;
+        return sizeX;
     }
-    public int getBoundY()
+    public int getSizeY()
     {
-        return boundy;
+        return sizeY;
     }
-    
-    public int getGap()
-    {
-        return gap;
-    }
-    
+
     public int getX()
     {
         return x;

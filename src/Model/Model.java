@@ -5,9 +5,9 @@ public class Model {
     private final int PIPE_GAP = 300;
     private final int PIPE_INITIAL_DISTANCE = 600;
     
-    private Bird b;
-    private Pipe[] p;
-    private Sky s;
+    private Bird bird;
+    private Pipe[] pipes;
+    private Sky sky;
     
     boolean gameOver;
     
@@ -20,32 +20,48 @@ public class Model {
     
     public void init()
     {
-        gameOver = false;
-        
         score = 0;
-        
-        b = new Bird();
-        p = new Pipe[]{
+        gameOver = false;
+
+        bird = new Bird();
+        pipes = new Pipe[]{
             new Pipe(PIPE_INITIAL_DISTANCE),
             new Pipe(PIPE_INITIAL_DISTANCE+PIPE_GAP),
             new Pipe(PIPE_INITIAL_DISTANCE+PIPE_GAP*2)};
-        s = new Sky();
+        sky = new Sky();
     }
     
     public boolean hasCollided()
     {
-        return ((b.getX()+60>=p[0].getX() && b.getX()<=(p[0].getX() + p[0].getBoundX())) &&
-                ((b.getY() >= p[0].getUpperY() && b.getY()+15 <= p[0].getUpperY() + p[0].getBoundY()) ||
-                b.getY()+60 >= (p[0].getLowerY()))) ||
-                ((b.getX()+60>=p[1].getX() && b.getX()<=(p[1].getX() + p[1].getBoundX())) &&
-                ((b.getY() >= p[1].getUpperY() && b.getY()+15 <= p[1].getUpperY() + p[1].getBoundY()) ||
-                b.getY()+60 >= (p[1].getLowerY()))) ||
-                b.getY() < -10 || b.getY() > 900;
+    // Debugger
+    // System.out.println("Pipe upperY:" +pipes[0].getUpperY()+"   Pipe sizeY:" +pipes[0].getSizeY() + "Bird posY "+bird.getPosY());
+
+        if (bird.getPosY() < -10 || bird.getPosY() > 900)
+            return true;
+
+        for (int i = 0; i < pipes.length; i++) {
+
+            boolean withinPipeX =
+                    bird.getPosX() + bird.getSizeX() >= pipes[i].getX() &&
+                    bird.getPosX() <= pipes[i].getX() + pipes[i].getSizeX();
+
+            boolean hitUpperPipe =
+                    bird.getPosY() <= pipes[i].getUpperY() + pipes[i].getSizeY();
+
+            boolean hitLowerPipe =
+                    bird.getPosY() + bird.getSizeY() >= pipes[i].getLowerY();
+
+            if (withinPipeX && (hitUpperPipe || hitLowerPipe)) {
+                return true;
+            }
+        }
+
+        return false;
     }
     
     public void updateScore()
     {
-        if ((b.getX() == p[0].getX() || b.getX() == p[1].getX()) && !gameOver)
+        if ((bird.getPosX() == pipes[0].getX() || bird.getPosX() == pipes[1].getX() || bird.getPosX() == pipes[2].getX()) && !gameOver)
             score++;
     }
     
@@ -53,33 +69,33 @@ public class Model {
     {
         return String.valueOf(score);
     }
-    
+
     public int[] getPipeUpperY()
     {
-        return new int[]{p[0].getUpperY(),p[1].getUpperY(),p[2].getUpperY()};
+        return new int[]{pipes[0].getUpperY(), pipes[1].getUpperY(), pipes[2].getUpperY()};
     }
-    
+
     public int[] getPipeLowerY()
     {
-        return new int[]{p[0].getLowerY(),p[1].getLowerY(),p[2].getLowerY()};
+        return new int[]{pipes[0].getLowerY(), pipes[1].getLowerY(), pipes[2].getLowerY()};
     }
-    
+
     public int[] getPipeX()
     {
-        return new int[]{p[0].getX(),p[1].getX(),p[2].getX()};
+        return new int[]{pipes[0].getX(), pipes[1].getX(), pipes[2].getX()};
     }
-    
+
     public int getSkyX()
     {
-        return s.getX();
+        return sky.getX();
     }
     
     public void update()
     {
         if (!gameOver)
         {
-            b.update();
-            for (Pipe pipe : p)
+            bird.update();
+            for (Pipe pipe : pipes)
                 pipe.update();
             updateScore();
         }
@@ -87,19 +103,29 @@ public class Model {
     
     public void birdJump()
     {
-        b.jump();
+        bird.jump();
     }
     
-    public int getBirdX()
+    public int getBirdPosX()
     {
-        return b.getX();
+        return bird.getPosX();
     }
     
-    public int getBirdY()
+    public int getBirdPosY()
     {
-        return b.getY();
+        return bird.getPosY();
     }
-    
+
+    public int getBirdSizeX()
+    {
+        return bird.getSizeX();
+    }
+
+    public int getBirdSizeY()
+    {
+        return bird.getSizeY();
+    }
+
     public boolean isGameOver()
     {
         return gameOver;

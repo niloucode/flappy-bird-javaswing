@@ -1,30 +1,41 @@
 package Model;
 
 public class Bird {
-    
-    private int x=100;
-    private int y=400;
-    private double vely=1;
-    private double accely=.2;
+    private final int sizeX=60;
+    private final int sizeY=30;
+
+    private int posX=100;
+    private int posY=400;
+
+    private double velY=1;
+    private final double accY=.2;
     
     public void update()
     {
-        y += vely; 
-        vely += accely;
+        posY += velY;
+        velY += accY;
     }
     
     public void jump()
     {
-        vely = -5;
+        velY = -5;
     }
     
-    public int getX()
+    public int getPosX()
     {
-        return x;
+        return posX;
     }
-    
-    public int getY()
+    public int getPosY()
     {
-        return y;
+        return posY;
+    }
+
+    public int getSizeX()
+    {
+        return sizeX;
+    }
+    public int getSizeY()
+    {
+        return sizeY;
     }
 }

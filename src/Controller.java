@@ -50,15 +50,15 @@ public class Controller implements MouseListener, KeyListener, ActionListener {
         // Bird sprite updating
         if (vp.isBirdFlying()) // If bird is set to flying sprite,
         {
-            spritecounter++; // Set a 'timer' ish thing that reverts back to normal sprite
-            if (spritecounter > 30) // After 30 instances
+            spritecounter++; // Increment timer to revert back to normal sprite
+            if (spritecounter > 30) // At 30 frames
             {
                 vp.setBirdFlying(false);
                 spritecounter=0;
             }
         }
         
-        // Check for collision!!!!!!!!!!!!!!!!!!!!!!!
+        // Check for collision!
         if (m.hasCollided())
             m.setGameOver(true);
     }

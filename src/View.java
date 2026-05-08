@@ -1,21 +1,20 @@
 import java.awt.*;
 import javax.swing.*;
 
-
 public class View extends JFrame {
-    private ViewPanel panel;
+    private ViewPanel vp;
     
     public View(ViewPanel vp)
     {
-        panel = vp;
+        this.vp = vp;
        
         setTitle("Flappy!");
-        setSize(800,800);
+        setSize(700,900);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        add(panel);
+        add(this.vp);
 
         setLocationRelativeTo(null);
-        setResizable(false);
+        setResizable(true);
         setVisible(true);
     }
     
